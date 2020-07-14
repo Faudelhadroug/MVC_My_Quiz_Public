@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz about {{ categorie }} !{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig'%}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class='mb-5'> {{ categorie }}</h1>
+    <h3 class='mb-5'>  {{ question }} </h3>
+</div>
+<p class='text-center'> Well done ! the good answer is : {{succes_anwser}}. </p>
+<form action="/quizz/{{id}}" method="post" class='text-center mr-5'>
+    <button type="submit" class="btn btn-success ml-4">Next</button>
+    <input type="hidden" name="question" value="{{ nbr_question }}">
+    <input type="hidden" name="idQuestion" value="{{ id_question }}">
+</form>
+{% endblock %}

@@ -1,0 +1,42 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <a class="navbar-brand" href="/home">My_Quiz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/quizz">Quizz</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/historic">Historic</a>
+            </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            {% if is_granted('ROLE_USER') == false %}
+            <a class="text-light" href="/login">
+                <button type="button" class="btn btn-info ml-4 mr-4">Login</button>
+            </a>
+            <a class='text-light' href="/register">
+                <button type="button" class="btn btn-danger mr-4">Register</button>
+            </a>
+            {% endif %}
+            {% if is_granted('ROLE_USER') == true %}
+            <a class="text-dark" href="/account">
+                <button type="button" class="btn btn-warning ml-4 ">@{{app.user.username}}</button>
+            </a>
+            <a class="text-light" href="/logout">
+                <button type="button" class="btn btn-dark ml-4 mr-4">Logout</button>
+             </a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

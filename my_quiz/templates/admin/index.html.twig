@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+{% block body %}
+{% include 'header.html.twig'%}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<h1>List of users </h1>
+<table class="table">
+    <thead>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Roles</th>
+        <th>Verified At</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td> {{ user.id }} </td>
+                <td> {{ user.email }} </td>
+                <td> {{ user.username }} </td>
+                <td>  
+                    {% for role in user.roles %}
+                        {% if role == "ROLE_USER" %}
+                            User
+                        {% elseif role == "ROLE_ADMIN" %}
+                            Admin
+                         {% elseif role == "ROLE_SUPER_ADMIN" %}
+                            SUPER ADMIN
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td> 
+                    {% if user.verifiedAt == null %}
+                        none
+                    {% else %}
+                        {{ user.verifiedAt|date("m/d/Y") }} 
+                    {% endif %}
+                </td>
+                <td><a href='{{ path('app_edit_user' , {'id': user.id}) }}' class='btn btn-warning'>Update</a>
+                <a href='{{ path('app_delete_user' , {'id': user.id}) }}' class='btn btn-danger'>Delete</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td> none </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

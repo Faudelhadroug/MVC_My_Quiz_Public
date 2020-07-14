@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz about {{ categorie }} !{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig'%}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class='mb-5'> {{ categorie }}</h1>
+    <h3 class='mb-5'> Well played you got a nice score ! {{ score }}/{{ nbr_question }} </h3>
+</div>
+<p class='text-center'>You can still discover a lot of Quizz</p>
+<form action="/quizz" method="post" class='text-center mr-5'>
+    <button type="submit" class="btn btn-success ml-4">See all Quizz</button>
+</form>
+{% endblock %}

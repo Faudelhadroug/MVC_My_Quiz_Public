@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig'%}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+    <h1> My account</h1>
+    <p> Hello  {{app.user.username}} </p>
+    <p> Your email address is {{app.user.email}} 
+    <a class="text-dark" href="/account/update-email">
+        <button type="button" class="btn btn-warning ml-4 ">Update email address</button>
+    </a>
+     </p>   
+    <p> Your password are very strong
+    <a class="text-dark" href="/account/update-password">
+        <button type="button" class="btn btn-warning ml-4 ">Update password</button>
+    </a>
+    </p>   
+
+
+</div>
+{% endblock %}

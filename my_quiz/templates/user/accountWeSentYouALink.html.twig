@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig'%}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+    <h1> My account</h1>
+    <p> Hello  {{app.user.username}} </p>
+    <p> You need to verify your account, click on the button below and ur team will send you an validation link in your email ! </p>
+    <form method='post' action='/account'>
+        <input type="hidden" name='sendEmail'>
+        <button type="submit" class="btn btn-primary"> Verify your email</button>
+    </form>
+</div>
+<div class="example-wrapper">
+    <p class='text-success'> we successfuly sent you a mail, wait few minute if you don't see him.</p>
+    <p> Your email address is {{app.user.email}} 
+    <a class="text-dark" href="/account/update-email">
+        <button type="button" class="btn btn-warning ml-4 ">Update email address</button>
+    </a>
+     </p>   
+</div>
+
+{% endblock %}

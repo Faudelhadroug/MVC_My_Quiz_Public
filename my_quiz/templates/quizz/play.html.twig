@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz about {{ categorie }} !{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig'%}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class='mb-5'> {{ categorie }}</h1>
+    <h3 class='mb-5'>  {{ question }} </h3>
+</div>
+<form action="/quizz/{{id}}" method="post" class='text-center mr-5'>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="firstAnwser" name="anwser" value="{{first_anwser}}" class="custom-control-input">
+        <label class="custom-control-label" for="firstAnwser">{{first_anwser}}</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="secondAnwser" name="anwser" value="{{second_anwser}}" class="custom-control-input">
+        <label class="custom-control-label" for="secondAnwser">{{second_anwser}}</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="thirdAnwser" name="anwser" value="{{third_anwser}}" class="custom-control-input">
+        <label class="custom-control-label" for="thirdAnwser">{{third_anwser}}</label>
+    </div>
+    <button type="submit" class="btn btn-success ml-4">Confirm</button>
+    <input type="hidden" name="reponse" value="{{ nbr_question }}">
+    <input type="hidden" name="question" value="{{ nbr_question }}">
+    <input type="hidden" name="idQuestion" value="{{ id_question }}">
+</form>
+{% endblock %}

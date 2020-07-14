@@ -1,0 +1,78 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+app_home:
+    path: /home
+    controller: App\Controller\UserController::home
+
+app_index:
+    path: /
+    controller: App\Controller\UserController::home
+
+app_emailValidationToken:
+    path: /email-validation/
+    controller: App\Controller\EmailValidationController::checkToken
+    methods: GET|POST
+
+app_account:
+    path: /account
+    controller: App\Controller\UserController::account
+
+app_update_email:
+    path: /account/update-email
+    controller: App\Controller\UpdateController::updateEmail
+
+app_update_password:
+    path: /account/update-password
+    controller: App\Controller\UpdateController::updatePassword
+
+app_quizz:
+    path: /quizz/{id}
+    controller: App\Controller\QuizzController::play
+    requirements:
+        id: '\d+'
+
+app_historique:
+    path: /historic
+    controller: App\Controller\UserController::historique
+
+app_quizz_create:
+    path: /quizz/create
+    controller: App\Controller\QuizzController::create
+
+app_admin:
+    path: /admin
+    controller: App\Controller\AdminController::usersList
+
+app_edit_user:
+    path: /admin/user/edit/{id}
+    controller: App\Controller\AdminController::editUser
+
+app_delete_user:
+    path: /admin/user/delete/{id}
+    controller: App\Controller\AdminController::deleteUser
+
+app_admin_categorie:
+    path: /admin/categorie
+    controller: App\Controller\AdminController::categoriesList
+
+app_edit_categorie:
+    path: /admin/categorie/edit/{id}
+    controller: App\Controller\AdminController::editCategorie
+
+app_soutenance:
+    path: /soutenance
+    controller: App\Controller\SoutenanceController::soutenance
